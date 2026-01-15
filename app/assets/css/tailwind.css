@@ -1,0 +1,46 @@
+@import 'tailwindcss';
+
+/* PrimeVue Select Dropdown Customization */
+.p-select {
+  background-color: white !important;
+}
+
+.p-select .p-select-label {
+  color: rgb(17 24 39) !important; /* gray-900 */
+}
+
+.p-select:disabled,
+.p-select.p-disabled {
+  opacity: 0.3 !important;
+}
+
+.p-select:focus,
+.p-select.p-focus {
+  border-color: rgb(15 118 110) !important; /* teal-100 */
+  box-shadow: 0 0 0 2px rgb(15 118 110 / 50%) !important;
+}
+
+.p-select:focus-visible {
+  border-color: rgb(204 251 241) !important; /* teal-100 */
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgb(15 118 110 / 50%) !important;
+}
+
+.p-select-overlay .p-select-option {
+  color: rgb(17 24 39) !important; /* gray-900 */
+}
+
+.p-select-overlay .p-select-option:hover {
+  color: white !important;
+  background-color: rgb(13 148 136) !important; /* teal-600 */
+}
+
+.p-select-overlay .p-select-option.p-focus {
+  color: white !important;
+  background-color: rgb(13 148 136) !important; /* teal-600 */
+}
+
+.p-select-overlay .p-select-option[aria-selected='true'] {
+  color: rgb(17 24 39) !important; /* gray-900 */
+  background-color: rgb(204 251 241) !important; /* teal-100 */
+}

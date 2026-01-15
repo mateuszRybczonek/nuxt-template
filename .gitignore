@@ -1,0 +1,41 @@
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+
+# Local env files
+.env
+*.env.*
+!.env.example
+
+# Other cache files
+.*cache
+
+# Local data
+mock-server/data
+components.d.ts
+
+# Local IDE files
+/.idea/misc.xml/
+/.idea/copilot.*
+/.ssl/
+.vercel
+
+/generated/prisma
+
+# Project-specific configuration
+CLAUDE.md
