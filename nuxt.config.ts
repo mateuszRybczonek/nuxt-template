@@ -2,7 +2,8 @@
 import tailwindcss from '@tailwindcss/vite'
 import { defineNuxtConfig } from 'nuxt/config'
 
-import { theme } from './app/theme/aura'
+import { theme } from '~/theme/aura'
+
 import packageJson from './package.json'
 
 const kDevServerPort = 3000
@@ -17,7 +18,7 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en',
       },
-      link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+      link: [],
     },
   },
   dir: {

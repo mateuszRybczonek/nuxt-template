@@ -1,51 +1,16 @@
 # Getting Started with Your New Project
 
-Follow these steps to start a new project using this template:
+## Quick Start (Recommended)
 
-## 1. Copy the Template
-
-## 2. Customize Project Identity
-
-### Update package.json
-
-- Change `"name"` from `"@your-org/nuxt-template"` to your project name
-- Update `"version"` if needed
-- Add your project description
-
-### Update nuxt.config.ts
-
-- Change `title: 'Your App Name'` to your app name
-- Update `kDevApiHost` and `kProdApiHost` with your API endpoints
-- Configure runtime config as needed
-
-### Update README.md
-
-- Replace "Nuxt Template" with your project name
-- Update the description and features
-- Add project-specific documentation
-
-### Update Landing Page
-
-- Edit `app/pages/index.vue` to customize the welcome page
-
-## 3. Configure Environment
+Run the init script to set up everything interactively:
 
 ```bash
-# Copy environment template
-cp .env.example .env
-
-# Add your environment variables to .env
+./scripts/init-project.sh
 ```
 
-## 4. Install Dependencies
+This will prompt you for project name, npm scope, app title, and API hosts, then automatically update configs, reset git history, and install dependencies.
 
-```bash
-pnpm install
-```
-
-This will also set up git hooks automatically via the `prepare` script.
-
-## 5. Start Development
+Once done, start developing:
 
 ```bash
 pnpm dev
@@ -53,22 +18,39 @@ pnpm dev
 
 Visit `http://localhost:3000` to see your app.
 
-## 6. Initialize Git Repository (if not already done)
+## Manual Setup
 
-If you want a fresh git history:
+If you prefer to set things up manually:
+
+### 1. Update package.json
+
+- Change `"name"` from `"@your-org/nuxt-template"` to your project name
+- Update `"version"` if needed
+
+### 2. Update nuxt.config.ts
+
+- Change `title: 'Your App Name'` to your app name
+- Update `kDevApiHost` and `kProdApiHost` with your API endpoints
+
+### 3. Configure Environment
 
 ```bash
-# Remove existing git history
-rm -rf .git
+cp .env.example .env
+```
 
-# Initialize new repository
+### 4. Install Dependencies
+
+```bash
+pnpm install
+```
+
+### 5. Reset Git History
+
+```bash
+rm -rf .git
 git init
 git add .
 git commit -m "Initial commit"
-
-# Add your remote
-git remote add origin <your-git-url>
-git push -u origin master
 ```
 
 ## 7. Customize Theme (Optional)
