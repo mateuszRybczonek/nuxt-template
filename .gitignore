@@ -39,3 +39,4 @@ components.d.ts
 
 # Project-specific configuration
 CLAUDE.md
+/.claude/

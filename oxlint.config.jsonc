@@ -142,10 +142,7 @@
     "eslint/symbol-description": "error",
     "eslint/unicode-bom": "error",
     "eslint/yoda": "error",
-    "import/consistent-type-specifier-style": [
-      "error",
-      { "prefer-top-level": true },
-    ],
+    "import/consistent-type-specifier-style": ["error", "prefer-top-level"],
     "import/default": "error",
     "import/first": "error",
     "import/max-dependencies": "off", // We heavily factor our code
@@ -167,11 +164,10 @@
     "node/no-new-require": "error",
     "oxc/bad-bitwise-operator": "error",
     "oxc/no-accumulating-spread": "error",
-    "oxc/no-approximate-constants": "error",
     "oxc/no-async-endpoint-handlers": "error",
     "oxc/no-barrel-file": "off",
     "oxc/no-const-enum": "error",
-    "oxc/no-misrefactored-assign-op": "error",
+    "oxc/misrefactored-assign-op": "error",
     "promise/avoid-new": "off", // Sometimes we need new Promise
     "promise/catch-or-return": "error",
     "promise/no-callback-in-promise": "error",
@@ -202,7 +198,6 @@
     "unicorn/no-array-reduce": "error",
     "unicorn/no-await-expression-member": "error",
     "unicorn/no-console-spaces": "error",
-    "unicorn/no-for-loop": "off", // No longer recommended
     "unicorn/no-hex-escape": "error",
     "unicorn/no-instanceof-array": "error",
     "unicorn/no-instanceof-builtins": "error",
@@ -225,7 +220,7 @@
     "unicorn/no-useless-undefined": "error",
     "unicorn/no-zero-fractions": "error",
     "unicorn/number-literal-case": "error",
-    "unicorn/numberic-separators-style": "error",
+    "unicorn/numeric-separators-style": "error",
     "unicorn/prefer-add-event-listener": "error",
     "unicorn/prefer-array-find": "error",
     "unicorn/prefer-array-flat": "error",

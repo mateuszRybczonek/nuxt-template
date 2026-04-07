@@ -1,24 +1,23 @@
-import importPlugin from 'eslint-plugin-import'
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript'
 
 // This config only defines the rules for the import plugin that are either
 // not defined or are different from the base neostandard config.
+// Note: The import plugin (import-x) is already registered by @nuxt/eslint — do not re-register it here.
 const config = {
   name: 'override/import',
   files: ['**/*.{mjs,ts,vue}'],
-  plugins: {
-    import: importPlugin,
-  },
   settings: {
     // Tell eslint-plugin-import to treat @ws/ as an internal package
     // for grouping
     'import/internal-regex': '^@ws/',
 
-    // Use the node resolver imports (importing a directory
-    // imports index.{js,ts,etc})
-    'import/resolver': {
-      node: ['.mjs', '.js', '.cjs'],
-      typescript: ['.ts', '.d.ts', '.vue'],
-    },
+    // Use the TypeScript resolver for import-x (resolver-next API)
+    'import-x/resolver-next': [
+      createTypeScriptImportResolver({
+        alwaysTryTypes: true,
+        extensions: ['.ts', '.d.ts', '.vue', '.mjs', '.js', '.cjs'],
+      }),
+    ],
     'eslint-import-resolver-custom-alias': {
       alias: {
         '@': './src',
