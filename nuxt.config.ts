@@ -2,7 +2,7 @@
 import tailwindcss from '@tailwindcss/vite'
 import { defineNuxtConfig } from 'nuxt/config'
 
-import { theme } from '~/theme/aura'
+import { theme } from './app/theme/aura'
 
 import packageJson from './package.json'
 
