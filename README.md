@@ -2,6 +2,31 @@
 
 A production-ready Nuxt 3 template with PrimeVue, Tailwind CSS, and comprehensive linting configuration.
 
+## Quick Start
+
+Run the init script to set up a new project interactively:
+
+```bash
+./scripts/init-project.sh
+```
+
+This will prompt you for:
+
+- **Project name** (kebab-case, e.g. `my-app`)
+- **npm scope** (e.g. `@my-org`, optional)
+- **App title** (shown in browser tab)
+- **Dev/Prod API hosts**
+
+It then automatically updates configs, resets git history, installs dependencies, and removes itself.
+
+Once done, start developing:
+
+```bash
+pnpm dev
+```
+
+> For manual setup steps, see [GETTING_STARTED.md](./GETTING_STARTED.md).
+
 ## Features
 
 - **Framework**: Nuxt 4 (SPA mode)

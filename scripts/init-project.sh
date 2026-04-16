@@ -75,6 +75,41 @@ sed -i '' "s|const kDevApiHost = '.*'|const kDevApiHost = '${kDevApiHost}'|" nux
 sed -i '' "s|const kProdApiHost = '.*'|const kProdApiHost = '${kProdApiHost}'|" nuxt.config.ts
 success "nuxt.config.ts updated"
 
+kClaudeConfigInstall="$(dirname "$kProjectRoot")/claude-config/install.sh"
+log "Installing Claude config..."
+if [[ -f "$kClaudeConfigInstall" ]]; then
+  bash "$kClaudeConfigInstall"
+  success "Claude config installed"
+else
+  echo -e "  ${kRed}claude-config/install.sh not found${kReset} — skipping. Expected at: ${kCyan}${kClaudeConfigInstall}${kReset}"
+fi
+
+log "Setting up Serena (Claude Code MCP)..."
+if command -v serena &>/dev/null; then
+  serena project create --name "${kProjectName}"
+  success "Serena project config created"
+else
+  echo -e "  ${kRed}serena not found${kReset} — skipping. Install with: ${kCyan}uv tool install -p 3.13 serena-agent@latest --prerelease=allow${kReset}"
+fi
+
+log "Installing ui.sh..."
+# Check .env file, then shell env for the token
+if [[ -f ".env" ]] && grep -q '^UIDOTSH_TOKEN=' .env; then
+  kUidotshToken="$(grep '^UIDOTSH_TOKEN=' .env | cut -d '=' -f2-)"
+fi
+kUidotshToken="${kUidotshToken:-${UIDOTSH_TOKEN:-}}"
+if [[ -z "$kUidotshToken" ]]; then
+  echo -e "  ${kRed}UIDOTSH_TOKEN not found${kReset} in .env or shell environment."
+  read -rp "  Enter your ui.sh token (or leave empty to skip): " kUidotshToken
+fi
+if [[ -n "$kUidotshToken" ]]; then
+  npx @uidotsh/install "$kUidotshToken"
+  success "ui.sh installed"
+else
+  echo -e "  ${kRed}No token provided${kReset} — skipping. Export in your shell profile and re-run:"
+  echo -e "  ${kCyan}echo 'export UIDOTSH_TOKEN=your-token' >> ~/.zshrc && source ~/.zshrc${kReset}"
+fi
+
 log "Resetting git history..."
 rm -rf .git
 git init -q
