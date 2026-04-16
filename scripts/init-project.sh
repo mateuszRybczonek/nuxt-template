@@ -94,21 +94,14 @@ fi
 
 log "Installing ui.sh..."
 # Check .env file, then shell env for the token
-if [[ -f ".env" ]] && grep -q '^UIDOTSH_TOKEN=' .env; then
-  kUidotshToken="$(grep '^UIDOTSH_TOKEN=' .env | cut -d '=' -f2-)"
-fi
-kUidotshToken="${kUidotshToken:-${UIDOTSH_TOKEN:-}}"
-if [[ -z "$kUidotshToken" ]]; then
-  echo -e "  ${kRed}UIDOTSH_TOKEN not found${kReset} in .env or shell environment."
-  read -rp "  Enter your ui.sh token (or leave empty to skip): " kUidotshToken
-fi
-if [[ -n "$kUidotshToken" ]]; then
-  npx @uidotsh/install "$kUidotshToken"
-  success "ui.sh installed"
-else
-  echo -e "  ${kRed}No token provided${kReset} — skipping. Export in your shell profile and re-run:"
-  echo -e "  ${kCyan}echo 'export UIDOTSH_TOKEN=your-token' >> ~/.zshrc && source ~/.zshrc${kReset}"
-fi
+npx @uidotsh/install
+success "ui.sh installed"
+
+# ── Self-destruct ────────────────────────────
+log "Cleaning up init script..."
+rm -f scripts/init-project.sh
+rmdir scripts 2>/dev/null || true # remove dir only if empty
+success "Init script removed"
 
 log "Resetting git history..."
 rm -rf .git
@@ -120,14 +113,6 @@ success "Fresh git history created"
 log "Installing dependencies..."
 pnpm install
 success "Dependencies installed"
-
-# ── Self-destruct ────────────────────────────
-log "Cleaning up init script..."
-rm -f scripts/init-project.sh
-rmdir scripts 2>/dev/null || true # remove dir only if empty
-git add -A
-git commit -q -m "chore: remove init script"
-success "Init script removed"
 
 echo -e "\n${kGreen}${kBold}✨ Project ${kPackageName} is ready!${kReset}"
 echo -e "   Run ${kCyan}pnpm dev${kReset} to start developing.\n"
